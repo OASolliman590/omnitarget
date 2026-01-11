@@ -1,5 +1,7 @@
 # OmniTarget: Target Discovery & Network Analysis
 
+![Graphical Abstract](assets/omnitarget_graphical_abstract.png)
+
 <p align="center">
   <strong>A network pharmacology pipeline for computational drug discovery</strong>
 </p>
