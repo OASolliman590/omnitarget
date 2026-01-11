@@ -1,0 +1,96 @@
+# AXL Inhibition in Breast Cancer - Complete Hypothesis Testing Workflow
+# FULLY COMPLIANT - All 6 scenarios with reduced verbosity fixes
+#
+# This configuration tests the hypothesis that AXL receptor tyrosine kinase
+# inhibition disrupts oncogenic signaling pathways in breast cancer.
+#
+# Scientific basis: AXL promotes invasion, metastasis, and therapy resistance
+# Testing effects on: p65 NF-κB, VEGF, MMP9, pAKT, STAT3, Cyclin D1, p38 MAPK,
+#                    MAPK/ERK, Caspase-3
+#
+# COMPLIANT WITH PIPELINE ARCHITECTURE
+# - All 6 scenarios included
+# - 11 targets in MRA simulation (based on successful Oct 30 run)
+# - simulation_mode: simple (stable mode)
+# - No explicit output.path (auto-generated timestamped filename)
+
+hypothesis: "AXL inhibition disrupts oncogenic signaling in breast cancer"
+
+description: |
+  Testing the effects of AXL receptor tyrosine kinase inhibition on
+  downstream pathways including:
+  - p65 NF-κB signaling (RELA)
+  - VEGF angiogenesis (VEGFA)
+  - MMP9 invasion/metastasis
+  - pAKT survival signaling (AKT1)
+  - STAT3 signaling
+  - Cyclin D1 proliferation (CCND1)
+  - p38 MAPK signaling (MAPK14)
+  - MAPK/ERK pathway (MAPK1/3)
+  - Caspase-3 apoptosis (CASP3)
+
+global_params:
+  tissue_context: breast
+
+scenarios:
+  # Scenario 1: Disease Network Construction
+  - id: 1
+    name: "Breast Cancer Disease Network"
+    disease_query: "breast cancer"
+
+  # Scenario 2: AXL Target Characterization
+  - id: 2
+    name: "AXL Target Analysis"
+    target_query: "AXL"
+
+  # Scenario 3: Cancer Analysis (Fixed: now logs info instead of warning for empty results)
+  - id: 3
+    name: "Breast Cancer Analysis"
+    cancer_type: "breast cancer"
+
+  # Scenario 4: MRA Simulation of AXL Inhibition
+  # Based on successful Oct 30 run with all 11 targets
+  - id: 4
+    name: "AXL Inhibition MRA Simulation"
+    targets:
+      - AXL     # Primary target
+      - RELA    # p65 NF-κB
+      - VEGFA   # VEGF
+      - MMP9    # Matrix metalloproteinase-9
+      - AKT1    # pAKT
+      - STAT3   # Signal transducer
+      - CCND1   # Cyclin D1
+      - MAPK14  # p38 MAPK
+      - MAPK1   # ERK2
+      - MAPK3   # ERK1
+      - CASP3   # Caspase-3
+    disease_context: "breast cancer"
+    simulation_mode: simple
+
+  # Scenario 5: Pathway Comparison
+  - id: 5
+    name: "AXL Pathway Comparison"
+    pathway_query: "AXL pathway"
+
+  # Scenario 6: Drug Repurposing
+  - id: 6
+    name: "AXL Drug Repurposing"
+    disease_query: "breast cancer"
+    tissue_context: "breast"
+
+# Output configuration
+# Let pipeline auto-generate timestamped filename
+output:
+  format: json
+  visualization: true
+
+# Expected validation metrics (from literature):
+# - AKT1 (pAKT): Expected decrease of ~80%
+# - RELA (NF-κB): Expected decrease of ~75%
+# - MAPK1/3 (ERK): Expected decrease of ~60%
+# - MMP9: Expected decrease of ~85%
+# - VEGFA: Expected decrease of ~65%
+# - CCND1: Expected decrease of ~60%
+# - STAT3: Expected decrease of ~50%
+# - MAPK14: Expected decrease of ~40%
+# - CASP3: Expected increase of ~70% (apoptosis)

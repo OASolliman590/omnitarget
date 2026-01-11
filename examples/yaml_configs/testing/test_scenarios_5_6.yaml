@@ -1,0 +1,16 @@
+global_params:
+  tissue_context: "breast"
+
+scenarios:
+  # Scenario 5: Pathway Comparison and Validation
+  - id: 5
+    name: "Pathway Comparison"
+    pathway_query: "breast cancer"
+    tissue_context: "breast"
+    
+  # Scenario 6: Drug Repurposing
+  - id: 6
+    name: "Drug Repurposing"
+    disease_query: "breast cancer"
+    tissue_context: "breast"
+    simulation_mode: "mra"

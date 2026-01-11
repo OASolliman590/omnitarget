@@ -1,0 +1,11 @@
+---
+global_params:
+  tissue_context: breast
+
+scenarios:
+  - id: 6
+    name: "AXL Drug Repurposing Network Test"
+    disease_query: "breast cancer"
+
+output:
+  format: json

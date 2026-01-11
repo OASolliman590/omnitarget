@@ -1,0 +1,164 @@
+# OmniTarget Visualization Configuration
+# Default parameters for visualization generation
+
+# Default style preset
+style: "publication"  # Options: publication, presentation, notebook
+
+# Output formats
+output:
+  # Static formats to generate by default
+  static_formats:
+    - png
+    # - pdf  # Uncomment for PDF output
+    # - svg  # Uncomment for SVG output
+  
+  # Generate interactive HTML versions
+  interactive: false
+  
+  # Default output directory (relative to project root)
+  default_dir: "results/figures"
+  
+  # DPI settings for different formats
+  dpi:
+    png: 300
+    jpg: 300
+    pdf: null  # Vector format, DPI not applicable
+
+# Network visualization settings
+network:
+  # Layout algorithm: spring, circular, kamada_kawai, spectral, shell
+  layout: "spring"
+  
+  # Node styling
+  node:
+    size: 500
+    size_by_degree: true  # Scale node size by degree centrality
+    min_size: 200
+    max_size: 1000
+    alpha: 0.8
+    edge_width: 2
+  
+  # Edge styling
+  edge:
+    width: 1.5
+    width_by_weight: true  # Scale edge width by weight/confidence
+    min_width: 0.5
+    max_width: 5.0
+    alpha: 0.6
+    curved: false
+  
+  # Label styling
+  labels:
+    show: true
+    font_size: 10
+    font_weight: "bold"
+  
+  # Interactive network settings (PyVis)
+  interactive:
+    height: "750px"
+    width: "100%"
+    bgcolor: "#ffffff"
+    font_color: "#000000"
+    physics: true
+    barnes_hut:
+      gravity: -8000
+      spring_length: 200
+      spring_strength: 0.001
+
+# Heatmap visualization settings
+heatmap:
+  colormap: "RdBu_r"  # Diverging colormap
+  center: 0  # Center point for diverging colormap
+  linewidths: 0.5
+  linecolor: "white"
+  square: true
+  robust: true  # Use robust quantiles for color limits
+  annot: false  # Annotate cells with values
+  fmt: ".2f"  # Format for annotations
+  cbar: true  # Show colorbar
+
+# Bar plot settings
+barplot:
+  orientation: "horizontal"  # horizontal or vertical
+  show_values: true  # Display values on bars
+  sort_by_value: true  # Sort bars by value
+  max_bars: 20  # Maximum number of bars to display
+  color_by_value: false  # Use gradient coloring
+
+# Scatter plot settings
+scatterplot:
+  size: 50
+  alpha: 0.7
+  edgecolor: "black"
+  linewidth: 0.5
+  show_regression: false  # Show regression line
+
+# Volcano plot settings (Scenario 6)
+volcano:
+  significance_line: 0.05  # P-value threshold
+  fold_change_lines:
+    - -1.5
+    - 1.5
+  point_size: 60
+  alpha: 0.7
+
+# Scenario-specific settings
+scenarios:
+  scenario_1:
+    generate:
+      - disease_network
+      - pathway_centrality
+      - gene_network
+    network_confidence_threshold: 0.4
+    
+  scenario_2:
+    generate:
+      - target_interaction_network
+      - pathway_enrichment
+      - druggability_scores
+      - expression_profile
+    network_confidence_threshold: 0.7
+    
+  scenario_3:
+    generate:
+      - marker_expression
+      - marker_heatmap
+      - prognostic_markers
+      - prioritized_targets
+    expression_threshold: 1.5
+    
+  scenario_4:
+    generate:
+      - network_propagation
+      - synergy_matrix
+      - perturbation_effects
+      - feedback_loops
+    effect_threshold: 0.1
+    
+  scenario_5:
+    generate:
+      - pathway_overlap_venn
+      - pathway_overlap_bar
+      - mechanistic_differences
+      - concordance_scores
+    
+  scenario_6:
+    generate:
+      - drug_volcano
+      - drug_target_network
+      - repurposing_candidates
+      - safety_profiles
+
+# Report generation settings
+report:
+  format: "html"  # html or markdown
+  include_summary: true
+  include_validation_metrics: true
+  include_figure_descriptions: true
+  generate_index: true
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_file: "logs/visualization.log"
+

@@ -1,0 +1,12 @@
+# Simple test configuration that should work with minimal MCP dependencies
+hypothesis: "Simple pipeline test"
+description: "Testing basic pipeline functionality with minimal external dependencies"
+
+global_params:
+  tissue_context: breast
+
+scenarios:
+  # Test only Scenario 1 with minimal parameters
+  - id: 1
+    name: "Simple Disease Network Test"
+    disease_query: "cancer"  # Generic query that might work better

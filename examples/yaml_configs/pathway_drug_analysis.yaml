@@ -1,0 +1,26 @@
+# OmniTarget Comprehensive Scenario YAML
+#
+# This configuration enables the testing of advanced pathway comparison and drug repurposing
+# for breast cancer, using MCP server integrations.
+
+hypothesis: "Cross-pathway validation and rational drug repurposing in breast cancer"
+description: |
+  Test advanced computational workflows for validating biological pathway coherence
+  and discovering repurposing candidates using network propagation and mechanistic simulation.
+  
+  This analysis focuses on:
+  - Pathway comparison between KEGG and Reactome databases
+  - Drug repurposing for breast cancer pathways
+  - Network-based validation and simulation
+  - Cross-database concordance analysis
+
+scenarios:
+  - id: 5
+    name: "Pathway Comparison and Validation"
+    pathway_query: "breast cancer"
+
+  - id: 6
+    name: "Drug Repurposing with Network Analysis"
+    disease_query: "breast cancer"
+    tissue_context: "breast"
+    simulation_mode: "mra"

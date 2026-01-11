@@ -1,0 +1,65 @@
+# Batch Analysis - Multiple Diseases and Targets
+#
+# Compare multiple cancer types to identify common and unique
+# therapeutic targets and pathways.
+
+hypothesis: "Comparative analysis of breast, lung, and prostate cancers"
+
+description: |
+  Batch analysis of three major cancer types to identify:
+  - Common oncogenic pathways
+  - Cancer-specific markers
+  - Shared therapeutic targets
+  - Tissue-specific expression patterns
+
+scenarios:
+  # Breast Cancer Analysis
+  - id: 1
+    name: "Breast Cancer Network"
+    disease_query: "breast cancer"
+    tissue_context: breast
+  
+  - id: 3
+    name: "Breast Cancer Markers"
+    cancer_type: "breast cancer"
+    tissue_context: breast
+  
+  # Lung Cancer Analysis
+  - id: 1
+    name: "Lung Cancer Network"
+    disease_query: "lung cancer"
+    tissue_context: lung
+  
+  - id: 3
+    name: "Lung Cancer Markers"
+    cancer_type: "lung cancer"
+    tissue_context: lung
+  
+  # Prostate Cancer Analysis
+  - id: 1
+    name: "Prostate Cancer Network"
+    disease_query: "prostate cancer"
+    tissue_context: prostate
+  
+  - id: 3
+    name: "Prostate Cancer Markers"
+    cancer_type: "prostate cancer"
+    tissue_context: prostate
+  
+  # Key Target Analysis
+  - id: 2
+    name: "TP53 Analysis"
+    target_query: "TP53"
+  
+  - id: 2
+    name: "EGFR Analysis"
+    target_query: "EGFR"
+  
+  - id: 2
+    name: "MYC Analysis"
+    target_query: "MYC"
+
+output:
+  format: json
+  path: "results/multi_cancer_comparative_analysis.json"
+

@@ -1,0 +1,25 @@
+# OmniTarget Pipeline - Scenario 1 All Tissues Test
+name: "Scenario 1 - All Tissues"
+description: "Test S1 fixes without tissue filter to validate tissue coverage"
+version: "1.0.0"
+
+author: "OmniTarget Dev"
+created: "2025-10-28"
+
+config:
+  timeout: 300
+  retry_attempts: 3
+  cache_enabled: true
+  log_level: "INFO"
+
+scenarios:
+  - id: 1
+    name: "Breast Cancer Disease Network"
+    disease_query: "breast cancer"
+    # tissue_context intentionally omitted to fetch all tissues
+
+output:
+  format: json
+  path: "results/s1_all_tissues_test.json"
+  visualization: false
+  include_metadata: true

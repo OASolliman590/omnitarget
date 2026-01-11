@@ -1,0 +1,44 @@
+# Drug Repurposing Analysis
+#
+# Identify potential drug repurposing opportunities for breast cancer
+# using network analysis and perturbation simulation.
+
+hypothesis: "Identify repurposing candidates for breast cancer treatment"
+
+description: |
+  Drug repurposing workflow including:
+  - Disease pathway identification (KEGG + Reactome)
+  - Known drug-target mappings (KEGG)
+  - Target network construction (STRING)
+  - Off-target prediction (network overlap)
+  - Expression validation (HPA)
+  - Cancer specificity assessment
+  - MRA simulation of drug effects
+  - Pathway enrichment analysis
+
+global_params:
+  tissue_context: breast
+
+scenarios:
+  # Step 1: Build disease network
+  - id: 1
+    name: "Breast Cancer Network"
+    disease_query: "breast cancer"
+  
+  # Step 2: Identify repurposing opportunities
+  - id: 6
+    name: "Drug Repurposing Analysis"
+    disease_query: "breast cancer"
+    simulation_mode: simple
+
+output:
+  format: json
+  path: "results/breast_cancer_drug_repurposing.json"
+
+# Analysis parameters
+analysis_criteria:
+  target_overlap_threshold: 0.5
+  network_proximity_cutoff: 2
+  expression_correlation_min: 0.6
+  safety_profile_requirement: "high"
+

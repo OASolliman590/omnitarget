@@ -1,0 +1,148 @@
+# Comprehensive AXL Breast Cancer Analysis - All 6 Scenarios
+# 
+# This configuration runs all 6 OmniTarget scenarios for a complete
+# AXL inhibition analysis in breast cancer, providing:
+# 1. Disease network construction
+# 2. Target characterization
+# 3. Cancer marker discovery
+# 4. MRA simulation
+# 5. Pathway comparison and validation
+# 6. Drug repurposing with network analysis
+
+hypothesis: "Comprehensive AXL inhibition analysis in breast cancer: from disease networks to drug repurposing"
+
+description: |
+  Complete computational analysis of AXL receptor tyrosine kinase inhibition 
+  in breast cancer, covering all aspects of systems biology and drug discovery:
+  
+  **Phase 1-4: Core AXL Analysis**
+  - Disease network construction and pathway mapping
+  - AXL target characterization and validation
+  - Breast cancer prognostic marker discovery
+  - Multi-target MRA simulation of AXL inhibition effects
+  
+  **Phase 5-6: Advanced Analysis**
+  - Cross-database pathway comparison and validation
+  - Network-based drug repurposing and safety analysis
+  
+  **Scientific Focus:**
+  - AXL signaling disruption and downstream effects
+  - Oncogenic pathway validation and mechanistic insights
+  - Drug repurposing opportunities and safety profiles
+  - Network-based therapeutic target prioritization
+
+# Global parameters removed to avoid conflicts with individual scenario parameters
+
+scenarios:
+  # ========================================
+  # PHASE 1: DISEASE NETWORK CONSTRUCTION
+  # ========================================
+  - id: 1
+    name: "Breast Cancer Disease Network"
+    disease_query: "breast cancer"
+  
+  # ========================================
+  # PHASE 2: AXL TARGET CHARACTERIZATION
+  # ========================================
+  - id: 2
+    name: "AXL Target Analysis"
+    target_query: "AXL"
+  
+  # ========================================
+  # PHASE 3: CANCER MARKER DISCOVERY
+  # ========================================
+  - id: 3
+    name: "Breast Cancer Prognostic Markers"
+    cancer_type: "breast cancer"
+    tissue_context: "breast"
+  
+  # ========================================
+  # PHASE 4: MRA SIMULATION
+  # ========================================
+  - id: 4
+    name: "AXL Inhibition MRA Simulation"
+    targets:
+      - AXL     # Primary target - receptor tyrosine kinase
+      - RELA    # p65 NF-κB - inflammation and survival
+      - VEGFA   # VEGF - angiogenesis
+      - MMP9    # Matrix metalloproteinase-9 - invasion
+      - AKT1    # pAKT - survival signaling
+      - STAT3   # Signal transducer - immune evasion
+      - CCND1   # Cyclin D1 - cell cycle progression
+      - MAPK14  # p38 MAPK - stress response
+      - MAPK1   # ERK2 - proliferation signaling
+      - MAPK3   # ERK1 - proliferation signaling
+      - CASP3   # Caspase-3 - apoptosis execution
+    disease_context: "breast cancer"
+    simulation_mode: mra
+  
+  # ========================================
+  # PHASE 5: PATHWAY COMPARISON
+  # ========================================
+  - id: 5
+    name: "Breast Cancer Pathway Comparison"
+    pathway_query: "breast cancer"
+  
+  # ========================================
+  # PHASE 6: DRUG REPURPOSING
+  # ========================================
+  - id: 6
+    name: "Breast Cancer Drug Repurposing"
+    disease_query: "breast cancer"
+    tissue_context: "breast"
+    simulation_mode: "mra"
+
+# Output configuration
+output:
+  format: json
+  path: "results/comprehensive_axl_breast_cancer_analysis.json"
+  visualization: true
+  include_metadata: true
+
+# Expected scientific outcomes
+expected_results:
+  disease_network:
+    - "Comprehensive breast cancer pathway mapping"
+    - "AXL integration in disease networks"
+    - "Cross-pathway interaction validation"
+  
+  target_analysis:
+    - "AXL druggability assessment"
+    - "Interaction network characterization"
+    - "Expression and localization profiles"
+  
+  cancer_markers:
+    - "Prognostic marker identification"
+    - "Expression dysregulation analysis"
+    - "Survival association validation"
+  
+  mra_simulation:
+    - "Network-wide perturbation effects"
+    - "Downstream pathway disruption"
+    - "Synergy and combination analysis"
+  
+  pathway_comparison:
+    - "Cross-database pathway validation"
+    - "Gene overlap and mechanistic analysis"
+    - "Database-specific insights"
+  
+  drug_repurposing:
+    - "Repurposing candidate identification"
+    - "Network-based safety assessment"
+    - "Clinical evidence integration"
+
+# Validation metrics
+validation_targets:
+  success_rate: "≥ 100%"
+  network_coverage: "≥ 80%"
+  pathway_validation: "≥ 70%"
+  drug_safety_score: "≥ 0.7"
+  scientific_rigor: "Publication-ready"
+
+# References
+references:
+  - "AXL receptor tyrosine kinase in cancer"
+  - "Breast cancer pathway databases"
+  - "Drug repurposing methodologies"
+  - "Network-based drug discovery"
+  - "Systems biology approaches"

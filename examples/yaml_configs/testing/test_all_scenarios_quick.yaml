@@ -1,0 +1,19 @@
+global_params:
+  tissue_context: "breast"
+
+scenarios:
+  # Test just scenarios 1-3 (faster, no MRA simulation)
+  - id: 1
+    name: "Disease Network Analysis"
+    disease_query: "breast cancer"
+    tissue_context: "breast"
+    
+  - id: 2
+    name: "Target Analysis"
+    target_query: "AXL"
+    tissue_context: "breast"
+    
+  - id: 3
+    name: "Cancer Analysis"
+    cancer_type: "breast cancer"
+    tissue_context: "breast"

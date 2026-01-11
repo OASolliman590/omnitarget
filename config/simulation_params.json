@@ -1,0 +1,17 @@
+{
+  "simple_perturbation": {
+    "max_depth": 3,
+    "confidence_threshold": 0.4,
+    "decay_factor": 0.7,
+    "pathway_weights": {
+      "same_pathway": 1.2,
+      "connected": 0.8,
+      "different": 0.4
+    }
+  },
+  "mra_simulation": {
+    "max_iterations": 1000,
+    "convergence_threshold": 1e-6,
+    "regularization_factor": 0.01
+  }
+}

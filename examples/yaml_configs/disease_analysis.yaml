@@ -1,0 +1,27 @@
+# Simple Disease Network Analysis
+#
+# Basic configuration for analyzing a single disease and constructing
+# its associated pathway network with expression data.
+
+hypothesis: "Comprehensive breast cancer network analysis"
+
+description: |
+  Build a comprehensive disease network for breast cancer including:
+  - Disease-associated pathways from KEGG and Reactome
+  - Protein-protein interaction network from STRING
+  - Tissue-specific expression data from HPA
+  - Cancer marker identification
+  - Functional enrichment analysis
+
+global_params:
+  tissue_context: breast
+
+scenarios:
+  - id: 1
+    name: "Breast Cancer Network"
+    disease_query: "breast cancer"
+
+output:
+  format: json
+  path: "results/breast_cancer_network.json"
+

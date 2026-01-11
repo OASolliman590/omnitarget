@@ -1,0 +1,23 @@
+# Scenario 6 Only - Drug Repurposing Isolated Test
+# For debugging and validation
+
+hypothesis: "Test S6 drug repurposing workflow in isolation"
+
+description: |
+  Isolated test of Scenario 6 (Drug Repurposing) to debug
+  remaining runtime issues and validate KEGG drug integration.
+
+scenarios:
+  - id: 6
+    name: "Breast Cancer Drug Repurposing Test"
+    disease_query: "breast cancer"
+    tissue_context: "breast"
+    simulation_mode: "mra"
+
+# Output configuration
+output:
+  format: json
+  path: "results/s6_isolated_test.json"
+  visualization: false
+  include_metadata: true
+

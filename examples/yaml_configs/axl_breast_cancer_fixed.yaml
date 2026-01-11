@@ -1,0 +1,77 @@
+# AXL Inhibition in Breast Cancer - Complete Hypothesis Testing Workflow
+#
+# This configuration tests the hypothesis that AXL receptor tyrosine kinase
+# inhibition disrupts oncogenic signaling pathways in breast cancer.
+#
+# Reference: Based on published studies showing AXL promotes invasion,
+# metastasis, and therapy resistance in breast cancer.
+
+hypothesis: "AXL inhibition disrupts oncogenic signaling in breast cancer"
+
+description: |
+  Testing the effects of AXL receptor tyrosine kinase inhibition on
+  downstream pathways including:
+  - p65 NF-κB signaling
+  - VEGF angiogenesis
+  - MMP9 invasion/metastasis
+  - pAKT survival signaling
+  - STAT3 signaling
+  - Cyclin D1 proliferation
+  - p38 MAPK signaling
+  - MAPK/ERK pathway
+  - Caspase-3 apoptosis
+
+global_params:
+  tissue_context: breast
+
+scenarios:
+  # Phase 1: Disease Network Construction
+  - id: 1
+    name: "Breast Cancer Disease Network"
+    disease_query: "breast cancer"
+
+  # Phase 2: AXL Target Characterization
+  - id: 2
+    name: "AXL Target Analysis"
+    target_query: "AXL"
+
+  # Phase 3: Breast Cancer Marker Discovery
+  - id: 3
+    name: "Breast Cancer Prognostic Markers"
+    cancer_type: "breast cancer"
+
+  # Phase 4: MRA Simulation of AXL Inhibition
+  - id: 4
+    name: "AXL Inhibition MRA Simulation"
+    targets:
+      - AXL     # Primary target
+      - RELA    # p65 NF-κB
+      - VEGFA   # VEGF
+      - MMP9    # Matrix metalloproteinase-9
+      - AKT1    # pAKT
+      - STAT3   # Signal transducer
+      - CCND1   # Cyclin D1
+      - MAPK14  # p38 MAPK
+      - MAPK1   # ERK2
+      - MAPK3   # ERK1
+      - CASP3   # Caspase-3
+    disease_context: "breast cancer"
+    simulation_mode: mra
+
+# Output configuration
+# Let pipeline auto-generate timestamped filename
+output:
+  format: json
+  visualization: true
+
+# Expected validation metrics
+# Based on published literature:
+# - AKT1 (pAKT): Expected decrease of ~80%
+# - RELA (NF-κB): Expected decrease of ~75%
+# - MAPK1/3 (ERK): Expected decrease of ~60%
+# - MMP9: Expected decrease of ~85%
+# - VEGFA: Expected decrease of ~65%
+# - CCND1: Expected decrease of ~60%
+# - STAT3: Expected decrease of ~50%
+# - MAPK14: Expected decrease of ~40%
+# - CASP3: Expected increase of ~70% (apoptosis)

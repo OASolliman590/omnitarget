@@ -1,0 +1,8 @@
+{
+  "kegg": {"path": "/path/to/mcp/kegg/build/index.js"},
+  "reactome": {"path": "/path/to/mcp/reactome/build/index.js"},
+  "string": {"path": "/path/to/mcp/string/build/index.js"},
+  "hpa": {"path": "/path/to/mcp/proteinatlas/build/index.js"},
+  "uniprot": {"path": "/path/to/mcp/uniprot-node/build/index.js"},
+  "chembl": {"path": "/path/to/mcp/chembl/build/index.js"}
+}

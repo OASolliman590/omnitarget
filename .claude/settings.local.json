@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find src/core -name \"*.py\" -type f -exec grep -l \"except Exception\" {} ;)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

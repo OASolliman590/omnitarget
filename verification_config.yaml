@@ -1,0 +1,17 @@
+global_parameters:
+  disease_context: "lung cancer"
+  tissue_context: "lung"
+  organism: "human"
+
+scenarios:
+  - id: 3
+    name: "Cancer Analysis (HPA Synonym Verification)"
+    cancer_type: "breast cancer"
+    tissue_context: "breast"
+  
+  - id: 4
+    name: "MRA Simulation (Timeout Verification)"
+    targets: ["SLC2A1", "LDHA"]
+    disease_context: "lung cancer"
+    simulation_mode: "mra"
+    tissue_context: "lung"

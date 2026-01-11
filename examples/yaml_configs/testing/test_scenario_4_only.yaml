@@ -1,0 +1,9 @@
+global_params:
+  tissue_context: "breast"
+
+scenarios:
+  - id: 4
+    name: "MRA Simulation"
+    targets: ["AXL", "RELA", "VEGFA"]
+    tissue_context: "breast"
+    simulation_mode: "mra"

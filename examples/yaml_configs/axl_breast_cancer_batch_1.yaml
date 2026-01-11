@@ -1,0 +1,27 @@
+# AXL Breast Cancer - Batch 1 (Scenarios 1-2)
+# Part 1 of comprehensive hypothesis testing
+
+hypothesis: "AXL inhibition disrupts oncogenic signaling in breast cancer"
+
+description: |
+  Testing the effects of AXL receptor tyrosine kinase inhibition on
+  downstream pathways - Batch 1 (Disease Network + Target Analysis)
+
+global_params:
+  tissue_context: breast
+
+scenarios:
+  # Phase 1: Disease Network Construction
+  - id: 1
+    name: "Breast Cancer Disease Network"
+    disease_query: "breast cancer"
+
+  # Phase 2: AXL Target Characterization
+  - id: 2
+    name: "AXL Target Analysis"
+    target_query: "AXL"
+
+# Output configuration
+output:
+  format: json
+  visualization: true

@@ -1,0 +1,255 @@
+{
+  "breast_cancer_genes": [
+    {
+      "gene_symbol": "TP53",
+      "uniprot_id": "P04637",
+      "string_id": "9606.ENSP00000269305",
+      "kegg_id": "hsa:7157",
+      "ensembl_id": "ENSG00000141510",
+      "description": "Tumor protein p53",
+      "molecular_weight": 43653.0,
+      "protein_class": "Transcription factor"
+    },
+    {
+      "gene_symbol": "BRCA1",
+      "uniprot_id": "P38398",
+      "string_id": "9606.ENSP00000357654",
+      "kegg_id": "hsa:672",
+      "ensembl_id": "ENSG00000012048",
+      "description": "Breast cancer type 1 susceptibility protein",
+      "molecular_weight": 207691.0,
+      "protein_class": "DNA repair protein"
+    },
+    {
+      "gene_symbol": "BRCA2",
+      "uniprot_id": "P51587",
+      "string_id": "9606.ENSP00000380152",
+      "kegg_id": "hsa:675",
+      "ensembl_id": "ENSG00000139618",
+      "description": "Breast cancer type 2 susceptibility protein",
+      "molecular_weight": 384201.0,
+      "protein_class": "DNA repair protein"
+    },
+    {
+      "gene_symbol": "ESR1",
+      "uniprot_id": "P03372",
+      "string_id": "9606.ENSP00000231851",
+      "kegg_id": "hsa:2099",
+      "ensembl_id": "ENSG00000012048",
+      "description": "Estrogen receptor 1",
+      "molecular_weight": 66155.0,
+      "protein_class": "Nuclear receptor"
+    },
+    {
+      "gene_symbol": "ERBB2",
+      "uniprot_id": "P04626",
+      "string_id": "9606.ENSP00000267171",
+      "kegg_id": "hsa:2064",
+      "ensembl_id": "ENSG00000141736",
+      "description": "Erb-b2 receptor tyrosine kinase 2",
+      "molecular_weight": 137909.0,
+      "protein_class": "Receptor tyrosine kinase"
+    },
+    {
+      "gene_symbol": "PIK3CA",
+      "uniprot_id": "P42336",
+      "string_id": "9606.ENSP00000263967",
+      "kegg_id": "hsa:5290",
+      "ensembl_id": "ENSG00000121879",
+      "description": "Phosphatidylinositol-4,5-bisphosphate 3-kinase catalytic subunit alpha",
+      "molecular_weight": 124002.0,
+      "protein_class": "Kinase"
+    },
+    {
+      "gene_symbol": "AKT1",
+      "uniprot_id": "P31749",
+      "string_id": "9606.ENSP00000263202",
+      "kegg_id": "hsa:207",
+      "ensembl_id": "ENSG00000142208",
+      "description": "AKT serine/threonine kinase 1",
+      "molecular_weight": 55652.0,
+      "protein_class": "Kinase"
+    },
+    {
+      "gene_symbol": "PTEN",
+      "uniprot_id": "P60484",
+      "string_id": "9606.ENSP00000263930",
+      "kegg_id": "hsa:5728",
+      "ensembl_id": "ENSG00000171862",
+      "description": "Phosphatase and tensin homolog",
+      "molecular_weight": 47168.0,
+      "protein_class": "Phosphatase"
+    },
+    {
+      "gene_symbol": "CDH1",
+      "uniprot_id": "P12830",
+      "string_id": "9606.ENSP00000261769",
+      "kegg_id": "hsa:999",
+      "ensembl_id": "ENSG00000039068",
+      "description": "Cadherin 1",
+      "molecular_weight": 97418.0,
+      "protein_class": "Cell adhesion molecule"
+    },
+    {
+      "gene_symbol": "RB1",
+      "uniprot_id": "P06400",
+      "string_id": "9606.ENSP00000267163",
+      "kegg_id": "hsa:5925",
+      "ensembl_id": "ENSG00000139687",
+      "description": "RB transcriptional corepressor 1",
+      "molecular_weight": 106273.0,
+      "protein_class": "Transcription factor"
+    },
+    {
+      "gene_symbol": "EGFR",
+      "uniprot_id": "P00533",
+      "string_id": "9606.ENSP00000275493",
+      "kegg_id": "hsa:1956",
+      "ensembl_id": "ENSG00000146648",
+      "description": "Epidermal growth factor receptor",
+      "molecular_weight": 134277.0,
+      "protein_class": "Receptor tyrosine kinase"
+    },
+    {
+      "gene_symbol": "MYC",
+      "uniprot_id": "P01106",
+      "string_id": "9606.ENSP00000253426",
+      "kegg_id": "hsa:4609",
+      "ensembl_id": "ENSG00000136997",
+      "description": "MYC proto-oncogene, bHLH transcription factor",
+      "molecular_weight": 49412.0,
+      "protein_class": "Transcription factor"
+    },
+    {
+      "gene_symbol": "CCND1",
+      "uniprot_id": "P24385",
+      "string_id": "9606.ENSP00000227507",
+      "kegg_id": "hsa:595",
+      "ensembl_id": "ENSG00000110092",
+      "description": "Cyclin D1",
+      "molecular_weight": 33679.0,
+      "protein_class": "Cell cycle regulator"
+    },
+    {
+      "gene_symbol": "GATA3",
+      "uniprot_id": "P23771",
+      "string_id": "9606.ENSP00000221823",
+      "kegg_id": "hsa:2625",
+      "ensembl_id": "ENSG00000107485",
+      "description": "GATA binding protein 3",
+      "molecular_weight": 44370.0,
+      "protein_class": "Transcription factor"
+    },
+    {
+      "gene_symbol": "FOXA1",
+      "uniprot_id": "P55317",
+      "string_id": "9606.ENSP00000250342",
+      "kegg_id": "hsa:3169",
+      "ensembl_id": "ENSG00000129514",
+      "description": "Forkhead box A1",
+      "molecular_weight": 47218.0,
+      "protein_class": "Transcription factor"
+    }
+  ],
+  "pathways": [
+    {
+      "id": "hsa05224",
+      "name": "Breast cancer",
+      "source_db": "kegg",
+      "genes": ["TP53", "BRCA1", "BRCA2", "ESR1", "ERBB2", "PIK3CA", "AKT1", "PTEN"]
+    },
+    {
+      "id": "R-HSA-73857",
+      "name": "RNA Polymerase II Transcription",
+      "source_db": "reactome",
+      "genes": ["TP53", "MYC", "GATA3", "FOXA1", "RB1"]
+    },
+    {
+      "id": "hsa04110",
+      "name": "Cell cycle",
+      "source_db": "kegg",
+      "genes": ["TP53", "RB1", "CCND1", "CDK4", "CDK6"]
+    },
+    {
+      "id": "R-HSA-73864",
+      "name": "DNA Repair",
+      "source_db": "reactome",
+      "genes": ["TP53", "BRCA1", "BRCA2", "ATM", "ATR"]
+    },
+    {
+      "id": "hsa04010",
+      "name": "MAPK signaling pathway",
+      "source_db": "kegg",
+      "genes": ["EGFR", "ERBB2", "PIK3CA", "AKT1", "MAPK1", "MAPK3"]
+    }
+  ],
+  "interactions": [
+    {
+      "protein_a": "TP53",
+      "protein_b": "BRCA1",
+      "combined_score": 0.8,
+      "evidence_types": {"experimental": 0.9, "database": 0.7},
+      "pathway_context": "DNA repair"
+    },
+    {
+      "protein_a": "TP53",
+      "protein_b": "MDM2",
+      "combined_score": 0.9,
+      "evidence_types": {"experimental": 0.95, "database": 0.85},
+      "pathway_context": "Cell cycle"
+    },
+    {
+      "protein_a": "ESR1",
+      "protein_b": "ERBB2",
+      "combined_score": 0.6,
+      "evidence_types": {"experimental": 0.7, "database": 0.5},
+      "pathway_context": "Breast cancer"
+    }
+  ],
+  "expression_profiles": [
+    {
+      "gene": "TP53",
+      "tissue": "breast",
+      "expression_level": "High",
+      "reliability": "Approved",
+      "cell_type_specific": false,
+      "subcellular_location": ["Nucleus", "Cytoplasm"]
+    },
+    {
+      "gene": "BRCA1",
+      "tissue": "breast",
+      "expression_level": "Medium",
+      "reliability": "Approved",
+      "cell_type_specific": true,
+      "subcellular_location": ["Nucleus"]
+    },
+    {
+      "gene": "ESR1",
+      "tissue": "breast",
+      "expression_level": "High",
+      "reliability": "Approved",
+      "cell_type_specific": true,
+      "subcellular_location": ["Nucleus"]
+    }
+  ],
+  "cancer_markers": [
+    {
+      "gene": "TP53",
+      "cancer_type": "breast cancer",
+      "prognostic_value": "unfavorable",
+      "survival_association": "decreased survival",
+      "expression_pattern": {"cancer": "high", "normal": "medium"},
+      "clinical_relevance": "Therapeutic target",
+      "confidence": 0.9
+    },
+    {
+      "gene": "BRCA1",
+      "cancer_type": "breast cancer",
+      "prognostic_value": "favorable",
+      "survival_association": "increased survival",
+      "expression_pattern": {"cancer": "low", "normal": "high"},
+      "clinical_relevance": "Biomarker",
+      "confidence": 0.8
+    }
+  ]
+}

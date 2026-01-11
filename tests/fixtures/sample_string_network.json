@@ -1,0 +1,235 @@
+{
+  "network_nodes": [
+    {
+      "id": "TP53",
+      "node_type": "protein",
+      "gene_symbol": "TP53",
+      "uniprot_id": "P04637",
+      "string_id": "9606.ENSP00000269305",
+      "pathways": ["hsa05224", "hsa04110"],
+      "expression_level": "High",
+      "centrality_measures": {
+        "betweenness": 0.15,
+        "closeness": 0.8,
+        "degree": 12
+      }
+    },
+    {
+      "id": "MDM2",
+      "node_type": "protein",
+      "gene_symbol": "MDM2",
+      "uniprot_id": "Q00987",
+      "string_id": "9606.ENSP00000258149",
+      "pathways": ["hsa04110"],
+      "expression_level": "Medium",
+      "centrality_measures": {
+        "betweenness": 0.12,
+        "closeness": 0.75,
+        "degree": 8
+      }
+    },
+    {
+      "id": "BRCA1",
+      "node_type": "protein",
+      "gene_symbol": "BRCA1",
+      "uniprot_id": "P38398",
+      "string_id": "9606.ENSP00000357654",
+      "pathways": ["hsa05224", "R-HSA-73864"],
+      "expression_level": "Medium",
+      "centrality_measures": {
+        "betweenness": 0.10,
+        "closeness": 0.7,
+        "degree": 6
+      }
+    },
+    {
+      "id": "BRCA2",
+      "node_type": "protein",
+      "gene_symbol": "BRCA2",
+      "uniprot_id": "P51587",
+      "string_id": "9606.ENSP00000380152",
+      "pathways": ["hsa05224", "R-HSA-73864"],
+      "expression_level": "Medium",
+      "centrality_measures": {
+        "betweenness": 0.08,
+        "closeness": 0.65,
+        "degree": 5
+      }
+    },
+    {
+      "id": "ATM",
+      "node_type": "protein",
+      "gene_symbol": "ATM",
+      "uniprot_id": "Q13315",
+      "string_id": "9606.ENSP00000261624",
+      "pathways": ["R-HSA-73864"],
+      "expression_level": "Low",
+      "centrality_measures": {
+        "betweenness": 0.06,
+        "closeness": 0.6,
+        "degree": 4
+      }
+    },
+    {
+      "id": "ATR",
+      "node_type": "protein",
+      "gene_symbol": "ATR",
+      "uniprot_id": "Q13535",
+      "string_id": "9606.ENSP00000278616",
+      "pathways": ["R-HSA-73864"],
+      "expression_level": "Low",
+      "centrality_measures": {
+        "betweenness": 0.05,
+        "closeness": 0.55,
+        "degree": 3
+      }
+    },
+    {
+      "id": "CHEK1",
+      "node_type": "protein",
+      "gene_symbol": "CHEK1",
+      "uniprot_id": "O14757",
+      "string_id": "9606.ENSP00000262730",
+      "pathways": ["R-HSA-73864"],
+      "expression_level": "Medium",
+      "centrality_measures": {
+        "betweenness": 0.07,
+        "closeness": 0.68,
+        "degree": 5
+      }
+    },
+    {
+      "id": "CHEK2",
+      "node_type": "protein",
+      "gene_symbol": "CHEK2",
+      "uniprot_id": "O96017",
+      "string_id": "9606.ENSP00000262731",
+      "pathways": ["R-HSA-73864"],
+      "expression_level": "Medium",
+      "centrality_measures": {
+        "betweenness": 0.06,
+        "closeness": 0.62,
+        "degree": 4
+      }
+    },
+    {
+      "id": "CDKN1A",
+      "node_type": "protein",
+      "gene_symbol": "CDKN1A",
+      "uniprot_id": "P38936",
+      "string_id": "9606.ENSP00000262732",
+      "pathways": ["hsa04110"],
+      "expression_level": "High",
+      "centrality_measures": {
+        "betweenness": 0.09,
+        "closeness": 0.72,
+        "degree": 7
+      }
+    },
+    {
+      "id": "RB1",
+      "node_type": "protein",
+      "gene_symbol": "RB1",
+      "uniprot_id": "P06400",
+      "string_id": "9606.ENSP00000267163",
+      "pathways": ["hsa04110"],
+      "expression_level": "Medium",
+      "centrality_measures": {
+        "betweenness": 0.11,
+        "closeness": 0.78,
+        "degree": 9
+      }
+    }
+  ],
+  "network_edges": [
+    {
+      "source": "TP53",
+      "target": "MDM2",
+      "weight": 0.9,
+      "interaction_type": "binding",
+      "evidence_score": 0.9,
+      "pathway_context": "Cell cycle"
+    },
+    {
+      "source": "TP53",
+      "target": "BRCA1",
+      "weight": 0.8,
+      "interaction_type": "binding",
+      "evidence_score": 0.8,
+      "pathway_context": "DNA repair"
+    },
+    {
+      "source": "TP53",
+      "target": "CDKN1A",
+      "weight": 0.85,
+      "interaction_type": "regulates",
+      "evidence_score": 0.85,
+      "pathway_context": "Cell cycle"
+    },
+    {
+      "source": "BRCA1",
+      "target": "BRCA2",
+      "weight": 0.7,
+      "interaction_type": "binding",
+      "evidence_score": 0.7,
+      "pathway_context": "DNA repair"
+    },
+    {
+      "source": "ATM",
+      "target": "TP53",
+      "weight": 0.75,
+      "interaction_type": "phosphorylates",
+      "evidence_score": 0.75,
+      "pathway_context": "DNA repair"
+    },
+    {
+      "source": "ATR",
+      "target": "TP53",
+      "weight": 0.65,
+      "interaction_type": "phosphorylates",
+      "evidence_score": 0.65,
+      "pathway_context": "DNA repair"
+    },
+    {
+      "source": "CHEK1",
+      "target": "TP53",
+      "weight": 0.6,
+      "interaction_type": "phosphorylates",
+      "evidence_score": 0.6,
+      "pathway_context": "DNA repair"
+    },
+    {
+      "source": "CHEK2",
+      "target": "TP53",
+      "weight": 0.55,
+      "interaction_type": "phosphorylates",
+      "evidence_score": 0.55,
+      "pathway_context": "DNA repair"
+    },
+    {
+      "source": "RB1",
+      "target": "TP53",
+      "weight": 0.5,
+      "interaction_type": "regulates",
+      "evidence_score": 0.5,
+      "pathway_context": "Cell cycle"
+    },
+    {
+      "source": "MDM2",
+      "target": "BRCA1",
+      "weight": 0.4,
+      "interaction_type": "binding",
+      "evidence_score": 0.4,
+      "pathway_context": "DNA repair"
+    }
+  ],
+  "network_metadata": {
+    "total_nodes": 10,
+    "total_edges": 10,
+    "average_degree": 2.0,
+    "density": 0.22,
+    "clustering_coefficient": 0.35,
+    "average_path_length": 2.1,
+    "diameter": 4
+  }
+}

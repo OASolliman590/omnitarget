@@ -1,0 +1,41 @@
+# AXL Breast Cancer - Batch 2 (Scenarios 3-4)
+# Part 2 of comprehensive hypothesis testing
+
+hypothesis: "AXL inhibition disrupts oncogenic signaling in breast cancer"
+
+description: |
+  Testing the effects of AXL receptor tyrosine kinase inhibition on
+  downstream pathways - Batch 2 (Cancer Analysis + MRA Simulation)
+
+global_params:
+  tissue_context: breast
+
+scenarios:
+  # Phase 3: Cancer Analysis
+  - id: 3
+    name: "Breast Cancer Analysis"
+    cancer_type: "breast cancer"
+
+  # Phase 4: MRA Simulation of AXL Inhibition
+  # All 11 targets for complete pathway analysis
+  - id: 4
+    name: "AXL Inhibition MRA Simulation"
+    targets:
+      - AXL     # Primary target
+      - RELA    # p65 NF-κB
+      - VEGFA   # VEGF
+      - MMP9    # Matrix metalloproteinase-9
+      - AKT1    # pAKT
+      - STAT3   # Signal transducer
+      - CCND1   # Cyclin D1
+      - MAPK14  # p38 MAPK
+      - MAPK1   # ERK2
+      - MAPK3   # ERK1
+      - CASP3   # Caspase-3
+    disease_context: "breast cancer"
+    simulation_mode: simple
+
+# Output configuration
+output:
+  format: json
+  visualization: true

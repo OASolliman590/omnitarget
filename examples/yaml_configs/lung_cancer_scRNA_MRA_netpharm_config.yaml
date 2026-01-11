@@ -1,0 +1,133 @@
+# Lung Cancer scRNA-seq → MRA Simulation → Network Pharmacology
+# FULL VERSION with ALL 6 scenarios - Compliant with P0-6 style pipeline
+#
+# Grounding (from your scRNA notebook exports, summarized in aligned_results_report_v2.pdf):
+# - 4719 significant DEGs (4455 up, 266 down)
+# - Enrichment: EMT, E2F targets, G2-M checkpoint, glycolysis; angiogenesis included
+# - Key upregulated RTK/angiogenesis genes: EGFR, ERBB2, ERBB3, VEGFB, PDGFA, PDGFRB
+# - Drug-target mapping highlights: TUBB3, CD2, EEF1A2, LDHA, DKK1, LOXL2
+#
+# This YAML config uses ONLY targets that appear in your scRNA-derived lists (DEG / enrichment examples / drug_targets_prioritized).
+
+hypothesis: "RTK/angiogenesis + EMT programs are activated in lung cancer scRNA-seq; perturbing scRNA-supported hubs will disrupt the disease network"
+
+description: |
+  This configuration extends the scRNA-seq workflow (DEG → pathway enrichment → target/drug mapping)
+  into MRA simulation and network pharmacology for lung cancer.
+
+  Target panel is grounded in your scRNA findings:
+  - RTK / angiogenesis axis: EGFR, ERBB2, ERBB3, VEGFB, PDGFA, PDGFRB, FGF2
+  - EMT / ECM remodeling (enriched): NNMT, SERPINE2, ITGB5, COL12A1, PLOD2, THY1, LOXL2, NT5E, CALD1, COL3A1, COL5A2, LUM
+  - Proliferation / cell-cycle (enriched): TOP2A, DTYMK, UBE2C, CDC6, HMMR, NDC80, CKS1B, AURKA, TPX2, WEE1
+  - Metabolism/translation: SLC2A1, AK4, LDHA, EEF1A2
+  - Clinically/drug-mapped nodes in your target list: TUBB3, DKK1, CD2
+  - Immune activation markers (from enrichment examples): TRAT1, GZMA, CD3D, CD3E, CD3G
+
+global_params:
+  tissue_context: "lung"
+
+scenarios:
+  # Phase 1: Disease Network Construction
+  - id: 1
+    name: "Lung Cancer Disease Network"
+    disease_query: "lung cancer"
+
+  # Phase 2: Primary Target Analysis (omics-supported)
+  - id: 2
+    name: "EGFR Target Analysis"
+    target_query: "EGFR"
+
+  # Phase 3: Cancer Analysis
+  - id: 3
+    name: "Lung Cancer Analysis"
+    cancer_type: "lung cancer"
+
+  # Phase 4: scRNA-informed MRA Simulation (broad panel)
+  # NOTE: This panel is intentionally comprehensive (grounded in your scRNA signatures).
+  # If runtime is high, start with the RTK/angiogenesis core (EGFR/ERBB2/ERBB3/VEGFB/PDGFA/PDGFRB/FGF2)
+  # then add EMT + cell-cycle modules iteratively.
+  - id: 4
+    name: "scRNA-informed MRA Simulation (RTK/Angiogenesis + EMT + Cell-Cycle + Immune)"
+    targets:
+      # --- RTK / angiogenesis (key DEGs)
+      - EGFR
+      - ERBB2
+      - ERBB3
+      - VEGFB
+      - PDGFA
+      - PDGFRB
+      - FGF2
+
+      # --- EMT / ECM remodeling (enriched term examples)
+      - NNMT
+      - SERPINE2
+      - ITGB5
+      - COL12A1
+      - PLOD2
+      - THY1
+      - LOXL2
+      - NT5E
+      - CALD1
+      - COL3A1
+      - COL5A2
+      - LUM
+
+      # --- Proliferation / cell-cycle (G2-M + E2F examples)
+      - TOP2A
+      - DTYMK
+      - UBE2C
+      - CDC6
+      - HMMR
+      - NDC80
+      - CKS1B
+      - AURKA
+      - TPX2
+      - WEE1
+
+      # --- Metabolism / translation
+      - SLC2A1
+      - AK4
+      - LDHA
+      - EEF1A2
+
+      # --- Drug-mapped targets from your prioritization table
+      - TUBB3
+      - DKK1
+      - CD2
+
+      # --- Immune markers present in enrichment examples
+      - TRAT1
+      - GZMA
+      - CD3D
+      - CD3E
+      - CD3G
+
+    disease_context: "lung cancer"
+    simulation_mode: "simple"
+    network_expansion:
+      initial_neighbors: 2
+      expansion_neighbors: 1
+      max_network_size: 80
+      step_timeouts:
+        3: 300
+        6: 450
+
+  # Phase 5: Pathway Comparison (choose the strongest enrichment anchor)
+  - id: 5
+    name: "Pathway Comparison (EMT anchor)"
+    pathway_query: "Epithelial Mesenchymal Transition"
+
+  # Phase 6: Drug Repurposing
+  - id: 6
+    name: "Lung Cancer Drug Repurposing"
+    disease_query: "lung cancer"
+    tissue_context: "lung"
+
+# Output configuration
+output:
+  format: json
+  visualization: true
+
+# Notes:
+# - Your biochemical assays (10 µM screen) can be used later as an orthogonal validation layer for target class activity.
+# - VEGFR2/KDR was not present among your scRNA upregulated symbols; keep angiogenesis context grounded in markers/enrichment unless KDR is verified in your dataset.

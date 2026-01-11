@@ -1,0 +1,344 @@
+name: OmniTarget Pipeline Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 2 * * 0'  # Weekly on Sunday at 2 AM
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10, 3.11]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-dev.txt
+    
+    - name: Run unit tests
+      run: |
+        pytest tests/unit/ -v --cov=src --cov-report=xml --cov-report=html
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+
+  integration-tests:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    
+    - name: Install MCP servers
+      run: |
+        # Install MCP server dependencies
+        cd /tmp
+        git clone https://github.com/omarasoliman/mcp-kegg.git
+        cd mcp-kegg && npm install && npm run build
+        
+        git clone https://github.com/omarasoliman/mcp-reactome.git
+        cd ../mcp-reactome && npm install && npm run build
+        
+        git clone https://github.com/omarasoliman/mcp-string.git
+        cd ../mcp-string && npm install && npm run build
+        
+        git clone https://github.com/omarasoliman/mcp-proteinatlas.git
+        cd ../mcp-proteinatlas && npm install && npm run build
+        
+        # Copy built servers to expected locations
+        mkdir -p /Users/omara.soliman/Documents/mcp/
+        cp -r /tmp/mcp-kegg/build /Users/omara.soliman/Documents/mcp/kegg/
+        cp -r /tmp/mcp-reactome/build /Users/omara.soliman/Documents/mcp/reactome/
+        cp -r /tmp/mcp-string/build /Users/omara.soliman/Documents/mcp/string/
+        cp -r /tmp/mcp-proteinatlas/build /Users/omara.soliman/Documents/mcp/proteinatlas/
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-dev.txt
+    
+    - name: Run integration tests
+      run: |
+        pytest tests/integration/ -v --timeout=300
+    
+    - name: Run scenario examples
+      run: |
+        python examples/basic_usage.py
+        python examples/scenarios_example.py
+
+  benchmark-validation:
+    if: github.event_name == 'schedule' || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-node@v3
+      with:
+        python-version: '3.9'
+    
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-benchmark.txt
+    
+    - name: Download benchmark data
+      run: |
+        python tests/benchmarks/download_datasets.py
+      env:
+        SYNAPSE_USERNAME: ${{ secrets.SYNAPSE_USERNAME }}
+        SYNAPSE_PASSWORD: ${{ secrets.SYNAPSE_PASSWORD }}
+        DRUGBANK_USERNAME: ${{ secrets.DRUGBANK_USERNAME }}
+        DRUGBANK_PASSWORD: ${{ secrets.DRUGBANK_PASSWORD }}
+    
+    - name: Run benchmark validation
+      run: |
+        pytest tests/benchmarks/ -v -m benchmark --timeout=3600
+    
+    - name: Generate validation report
+      run: |
+        python tests/benchmarks/generate_report.py
+    
+    - name: Upload benchmark results
+      uses: actions/upload-artifact@v3
+      with:
+        name: benchmark-results
+        path: tests/benchmarks/results/
+    
+    - name: Upload validation report
+      uses: actions/upload-artifact@v3
+      with:
+        name: validation-report
+        path: tests/benchmarks/reports/
+
+  performance-tests:
+    needs: integration-tests
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-dev.txt
+    
+    - name: Run performance tests
+      run: |
+        pytest tests/performance/ -v --timeout=600
+    
+    - name: Generate performance report
+      run: |
+        python tests/performance/generate_performance_report.py
+    
+    - name: Upload performance results
+      uses: actions/upload-artifact@v3
+      with:
+        name: performance-results
+        path: tests/performance/results/
+
+  security-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install safety bandit
+    
+    - name: Run security checks
+      run: |
+        safety check
+        bandit -r src/ -f json -o security-report.json
+    
+    - name: Upload security report
+      uses: actions/upload-artifact@v3
+      with:
+        name: security-report
+        path: security-report.json
+
+  documentation-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install sphinx sphinx-rtd-theme
+    
+    - name: Build documentation
+      run: |
+        cd docs/
+        sphinx-build -b html . _build/html
+    
+    - name: Check documentation links
+      run: |
+        pip install linkchecker
+        linkchecker docs/_build/html/index.html
+    
+    - name: Upload documentation
+      uses: actions/upload-artifact@v3
+      with:
+        name: documentation
+        path: docs/_build/html/
+
+  linting:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install flake8 black isort mypy
+    
+    - name: Run flake8
+      run: |
+        flake8 src/ tests/ --count --select=E9,F63,F7,F82 --show-source --statistics
+    
+    - name: Run black
+      run: |
+        black --check src/ tests/
+    
+    - name: Run isort
+      run: |
+        isort --check-only src/ tests/
+    
+    - name: Run mypy
+      run: |
+        mypy src/ --ignore-missing-imports
+
+  build-package:
+    needs: [unit-tests, integration-tests, linting]
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install build dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build twine
+    
+    - name: Build package
+      run: |
+        python -m build
+    
+    - name: Check package
+      run: |
+        twine check dist/*
+    
+    - name: Upload package
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist
+        path: dist/
+
+  deploy-documentation:
+    if: github.ref == 'refs/heads/main'
+    needs: [documentation-tests, build-package]
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install sphinx sphinx-rtd-theme
+    
+    - name: Build documentation
+      run: |
+        cd docs/
+        sphinx-build -b html . _build/html
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/_build/html
+        cname: omnitarget.readthedocs.io

@@ -1,0 +1,43 @@
+global_params:
+  tissue_context: "breast"
+  simulation_mode: "mra"
+
+scenarios:
+  # Scenario 1: Disease Network Analysis
+  - id: 1
+    name: "Disease Network Analysis"
+    disease_query: "breast cancer"
+    tissue_context: "breast"
+    
+  # Scenario 2: Target Analysis
+  - id: 2
+    name: "Target Analysis"
+    target_query: "AXL"
+    tissue_context: "breast"
+    
+  # Scenario 3: Cancer Analysis
+  - id: 3
+    name: "Cancer Analysis"
+    cancer_type: "breast cancer"
+    tissue_context: "breast"
+    
+  # Scenario 4: MRA Simulation
+  - id: 4
+    name: "MRA Simulation"
+    targets: ["AXL", "RELA", "VEGFA", "AKT1", "STAT3", "MAPK1", "MAPK3", "CASP3", "CCND1", "MAPK14", "MMP9"]
+    disease_context: "breast cancer"
+    tissue_context: "breast"
+    simulation_mode: "mra"
+    
+  # Scenario 5: Pathway Comparison
+  - id: 5
+    name: "Pathway Comparison"
+    pathway_query: "breast cancer"
+    tissue_context: "breast"
+    
+  # Scenario 6: Drug Repurposing
+  - id: 6
+    name: "Drug Repurposing"
+    disease_query: "breast cancer"
+    tissue_context: "breast"
+    simulation_mode: "mra"

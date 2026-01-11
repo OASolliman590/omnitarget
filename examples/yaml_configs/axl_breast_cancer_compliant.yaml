@@ -1,0 +1,57 @@
+# AXL Inhibition in Breast Cancer - Production-Ready Configuration
+# Fully compliant with OmniTarget pipeline architecture (P0-6)
+#
+# Hypothesis: AXL receptor tyrosine kinase inhibition disrupts oncogenic
+# signaling pathways in breast cancer.
+#
+# Based on published studies showing AXL promotes invasion, metastasis,
+# and therapy resistance in breast cancer.
+
+hypothesis: "AXL inhibition disrupts oncogenic signaling in breast cancer"
+
+description: |
+  Testing the effects of AXL receptor tyrosine kinase inhibition on
+  downstream pathways including:
+  - p65 NF-κB signaling
+  - VEGF angiogenesis
+  - MMP9 invasion/metastasis
+  - pAKT survival signaling
+  - STAT3 signaling
+  - Cyclin D1 proliferation
+  - p38 MAPK signaling
+  - MAPK/ERK pathway
+  - Caspase-3 apoptosis
+
+global_params:
+  tissue_context: breast
+
+scenarios:
+  # Phase 1: Disease Network Construction
+  - id: 1
+    name: "Breast Cancer Disease Network"
+    disease_query: "breast cancer"
+
+  # Phase 2: AXL Target Characterization
+  - id: 2
+    name: "AXL Target Analysis"
+    target_query: "AXL"
+
+  # Phase 3: MRA Simulation of AXL Inhibition
+  # (Simplified from original 11 targets to avoid unit conversion loops)
+  - id: 4
+    name: "AXL Inhibition MRA Simulation"
+    targets:
+      - AXL     # Primary target
+    disease_context: "breast cancer"
+    simulation_mode: simple
+
+# Output configuration
+# Let pipeline auto-generate timestamped filename
+output:
+  format: json
+  visualization: true
+
+# Expected validation metrics
+# Based on published literature:
+# - AXL inhibition expected to show significant pathway disruption
+# - Validation scores should be >0.5 for successful analysis

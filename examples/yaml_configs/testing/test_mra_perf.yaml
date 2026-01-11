@@ -1,0 +1,16 @@
+# Test MRA Performance - 2 targets only
+hypothesis: "Testing MRA with performance fixes"
+description: "Verify MRA completes in <5 minutes with 2 targets"
+
+global:
+  tissue_context: "breast"
+
+scenarios:
+  - id: 4
+    name: "MRA Performance Test"
+    targets: ["AXL", "BRCA1"]
+    disease_context: "breast cancer"
+    simulation_mode: "mra"
+
+output:
+  path: "results/test_mra_perf_20251109.json"

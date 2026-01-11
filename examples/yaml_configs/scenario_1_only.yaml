@@ -1,0 +1,62 @@
+# OmniTarget Pipeline - Scenario 1 Only Test
+# 
+# Purpose: Isolated test of S1 Disease Network Construction
+# To validate Reactome gene extraction and UniProt enrichment fixes
+
+# Pipeline metadata
+name: "Scenario 1 Isolated Test - AXL Breast Cancer"
+description: "Test S1 fixes with stable MCP server connections"
+version: "1.0.0"
+author: "OmniTarget Development Team"
+created: "2025-10-27"
+
+# Global configuration
+config:
+  timeout: 300
+  retry_attempts: 3
+  cache_enabled: true
+  log_level: "INFO"
+
+# Scenario execution
+scenarios:
+  # ========================================
+  # SCENARIO 1: DISEASE NETWORK ONLY
+  # ========================================
+  - id: 1
+    name: "Breast Cancer Disease Network"
+    disease_query: "breast cancer"
+    tissue_context: "breast"
+
+# Output configuration
+output:
+  format: json
+  path: "results/s1_isolated_test.json"
+  visualization: false
+  include_metadata: true
+
+# Expected results for S1
+expected_results:
+  disease_network:
+    - "Multi-database disease discovery (KEGG + Reactome)"
+    - "Pathway extraction with gene enrichment"
+    - "Reactome gene extraction using get_pathway_details"
+    - "Pathway-gene mapping for all nodes"
+    - "UniProt ID enrichment from HPA"
+    - "Interaction type inference from STRING evidence"
+    - "Edge pathway context from shared memberships"
+
+# Validation targets
+validation_targets:
+  reactome_genes: "≥ 100"
+  nodes_with_pathways: "≥ 80%"
+  nodes_with_uniprot: "≥ 80%"
+  edges_with_types: "≥ 90%"
+  edges_with_context: "≥ 30%"
+  validation_score: "≥ 0.60"
+
+# References
+references:
+  - "S1_STEP_BY_STEP_FIX_PLAN.md"
+  - "S1_FIXES_IMPLEMENTED.md"
+  - "S1_VALIDATION_REPORT.md"
+

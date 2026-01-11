@@ -1,0 +1,24 @@
+# Target-Centric Analysis
+#
+# Comprehensive characterization of TP53 tumor suppressor gene
+# including pathways, interactions, expression, and druggability.
+
+hypothesis: "TP53 as a therapeutic target in cancer"
+
+description: |
+  Comprehensive analysis of TP53 including:
+  - Multi-database target resolution (STRING, HPA, KEGG)
+  - Pathway membership analysis (Reactome primary)
+  - Interaction network (STRING + Reactome mechanistic)
+  - Expression profiling (HPA tissue-specific)
+  - Druggability assessment (KEGG drugs + localization)
+
+scenarios:
+  - id: 2
+    name: "TP53 Target Analysis"
+    target_query: "TP53"
+
+output:
+  format: json
+  path: "results/tp53_target_analysis.json"
+
