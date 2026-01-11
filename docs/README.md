@@ -1,20 +1,20 @@
 # Documentation
 
-This folder collects the official documentation for OmniTarget.
+## Start Here
+- [Project Overview](../README.md)
+- [Technical Architecture](condensed_technical_documentation.md)
+- [Implementation Notes](condensed_implementation_fixes.md)
+- [Testing Progress](condensed_progress_testing.md)
+- [Results Analysis](condensed_results_analysis.md)
 
-## Start here
-- Project overview: ../README.md
-- Technical overview: ../condensed_technical_documentation.md
-- Progress/testing summary: ../condensed_progress_testing.md
-- Results analysis: ../condensed_results_analysis.md
-- Implementation fixes: ../condensed_implementation_fixes.md
+## Development History
+- [Development Timeline](development-timeline/README.md)
+- [QWEN Development Notes](QWEN.md)
 
-## Development timeline
-- Overview: development-timeline/README.md
-- Logs: development-timeline/logs/
-- Results: development-timeline/results/
-- Notes: development-timeline/notes/
+## Configuration
+- [MCP Server Config](../config/mcp_servers.example.json)
+- [Verification Config](../config/verification_config.yaml)
 
-## Other references
-- Environment template: ../config/env.example
-- Example configs and scripts: ../examples/
+## Examples
+- [YAML Configs](../examples/yaml_configs/)
+- [Example Scripts](../examples/)

@@ -1,104 +1,176 @@
 # OmniTarget: Target Discovery & Network Analysis
 
-OmniTarget is a Python pipeline for network-based target discovery and pathway analysis. It orchestrates multiple Model Context Protocol (MCP) servers (KEGG, Reactome, STRING, HPA, UniProt, ChEMBL) to build disease networks, characterize targets, and support network pharmacology workflows.
+<p align="center">
+  <strong>A network pharmacology pipeline for computational drug discovery</strong>
+</p>
 
-## Core capabilities
-- Multi-database disease and pathway discovery
-- Protein interaction networks and expression overlays
-- Cancer-specific biomarker and tissue expression analysis
-- Modular Response Analysis (MRA) simulations
-- Cross-pathway enrichment and comparison
-- Network-based drug repurposing and off-target analysis
+<p align="center">
+  <a href="#scientific-use-cases">Use Cases</a> •
+  <a href="#scenarios">Scenarios</a> •
+  <a href="#quick-start">Quick Start</a> •
+  <a href="#documentation">Docs</a>
+</p>
+
+---
+
+## Overview
+
+OmniTarget is a Python pipeline that orchestrates multiple biological databases via Model Context Protocol (MCP) to build disease networks, characterize therapeutic targets, and support network pharmacology workflows.
+
+**Integrates with:** KEGG • Reactome • STRING • ChEMBL • UniProt • Human Protein Atlas
+
+---
+
+## Scientific Use Cases
+
+### 🎯 Target Identification
+Identify novel therapeutic targets for diseases by constructing protein-protein interaction networks and analyzing pathway enrichment across KEGG and Reactome databases.
+
+**Example:** Identify key hub genes in breast cancer signaling networks for potential therapeutic intervention.
+
+### 💊 Drug Repurposing
+Discover existing approved drugs that may be effective against new disease indications through network-based target overlap analysis.
+
+**Example:** Find FDA-approved kinase inhibitors that could target AXL-driven cancers.
+
+### 🧬 Multi-Target Drug Design
+Analyze polypharmacology profiles to identify compounds affecting multiple disease-relevant targets with acceptable off-target profiles.
+
+**Example:** Design combination therapies targeting both primary oncogenes and resistance pathways.
+
+### 🔬 Biomarker Discovery
+Identify tissue-specific expression patterns and cancer biomarkers using Human Protein Atlas integration.
+
+**Example:** Find druggable targets with tumor-specific expression for selective therapy.
+
+### 📊 Pathway Cross-Validation
+Compare disease mechanisms across multiple pathway databases to identify robust therapeutic targets.
+
+**Example:** Validate NFκB pathway targets by cross-referencing KEGG and Reactome annotations.
+
+### 🧪 Perturbation Simulation
+Model drug effects on biological networks using Modular Response Analysis (MRA) to predict efficacy and identify feedback loops.
+
+**Example:** Simulate EGFR inhibition effects on downstream RAF/MEK/ERK signaling.
+
+---
 
 ## Scenarios
-1. Disease network construction
-2. Target analysis
-3. Cancer analysis
-4. MRA simulation
-5. Pathway comparison
-6. Drug repurposing
 
-## Quick start
+| # | Scenario | Description |
+|---|----------|-------------|
+| 1 | **Disease Network** | Multi-database disease discovery + pathway mapping + network construction |
+| 2 | **Target Analysis** | Protein interaction networks + expression validation + druggability assessment |
+| 3 | **Cancer Analysis** | Cancer-specific biomarkers + tissue expression + pathology data |
+| 4 | **MRA Simulation** | Modular Response Analysis + perturbation modeling + feedback detection |
+| 5 | **Pathway Comparison** | Cross-pathway enrichment + functional comparison across databases |
+| 6 | **Drug Repurposing** | Network-based drug discovery + off-target analysis + safety profiling |
 
-### 1) Install
+---
+
+## Quick Start
+
+### 1. Install
 ```bash
-python -m pip install -e .
+pip install -e .
 ```
 
-### 2) Configure MCP servers
-Copy the example and point each server to your local MCP builds:
+### 2. Configure MCP Servers
 ```bash
 cp config/mcp_servers.example.json config/mcp_servers.json
-```
-Edit `config/mcp_servers.json` to match your MCP server paths.
-
-Optional environment config:
-```bash
-cp config/env.example .env
+# Edit with your MCP server paths
 ```
 
-### 3) Run a basic health check
+### 3. Run Analysis
 ```bash
-omnitarget health
-```
-
-### 4) Run a sample analysis
-```bash
+# Run a sample analysis
 python -m src.cli yaml examples/yaml_configs/axl_breast_cancer.yaml
+
+# Visualize results
+python -m src.cli visualize results/analysis.json --interactive
 ```
 
-### 5) Visualize results
-```bash
-python -m src.cli visualize results/axl_breast_cancer_analysis.json
+---
+
+## Example: AXL in Breast Cancer
+
+```yaml
+# examples/yaml_configs/axl_breast_cancer.yaml
+disease: breast cancer
+targets:
+  - AXL
+  - EGFR
+  - MET
+tissue_context: breast
+scenarios:
+  - target_analysis
+  - drug_repurposing
+  - mra_simulation
 ```
 
-## CLI usage
-```bash
-omnitarget example
-omnitarget health
-python -m src.cli interactive
-python -m src.cli yaml examples/yaml_configs/axl_breast_cancer.yaml
-python -m src.cli visualize results/analysis.json --interactive --format all
+**Output includes:**
+- Protein interaction network (50+ interactors)
+- Drug candidates with repurposing scores
+- MRA simulation of target perturbation effects
+- Expression validation across tissues
+
+---
+
+## Repository Structure
+
+```
+omnitarget/
+├── src/                    # Core pipeline
+│   ├── scenarios/          # 6 scientific scenarios
+│   ├── mcp_clients/        # Database integrations
+│   ├── core/               # Pipeline orchestration
+│   └── visualization/      # Result visualization
+├── config/                 # Configuration files
+├── examples/               # Example configs and scripts
+├── tests/                  # Test suites
+├── scripts/                # Utility scripts
+│   ├── testing/            # Test runners
+│   └── validation/         # Validation scripts
+├── docs/                   # Documentation
+└── network_pharmacology/   # Standalone visualization toolkit
 ```
 
-## Testing
-Recommended suite (comprehensive):
-```bash
-python run_efficient_tests.py --mode comprehensive
-```
-
-Additional modes:
-```bash
-python run_efficient_tests.py --mode dev
-python run_efficient_tests.py --mode integration
-python run_efficient_tests.py --mode performance
-```
-
-See `tests/README.md` for suite details and guidance.
-
-## Outputs
-- Default output directory: `results/`
-- Development timeline (logs, run artifacts): `docs/development-timeline/`
+---
 
 ## Documentation
-- Documentation index: `docs/README.md`
-- Technical overview: `condensed_technical_documentation.md`
-- Progress/testing summary: `condensed_progress_testing.md`
-- Results analysis: `condensed_results_analysis.md`
 
-## Repository structure
+| Document | Description |
+|----------|-------------|
+| [Technical Overview](docs/condensed_technical_documentation.md) | Architecture and implementation details |
+| [Testing Guide](tests/README.md) | Test suite usage |
+| [Examples](examples/) | Sample configurations and scripts |
+
+---
+
+## Citation
+
+If you use OmniTarget in your research, please cite:
+
 ```
-config/            MCP server config and runtime settings
-src/               Core pipeline and scenario implementations
-tests/             Unit, integration, performance, production tests
-examples/          Example scripts and YAML configs
-docs/              Documentation and development timeline
-archive/           Legacy tests and historical artifacts
+OmniTarget: Target Discovery & Network Analysis
+Omara Soliman, 2026
+https://github.com/OASolliman590/omnitarget
 ```
+
+---
+
+## License
+
+**Academic Use License** - Free for academic research; commercial use requires separate license. See [LICENSE](LICENSE).
+
+---
 
 ## Related Projects
-- [netpharm-viz](https://github.com/OASolliman590/netpharm-viz) - Standalone network visualization toolkit (proof-of-concept)
 
-## GitHub
-Repository: https://github.com/OASolliman590/omnitarget
-Issues: https://github.com/OASolliman590/omnitarget/issues
+- [netpharm-viz](https://github.com/OASolliman590/netpharm-viz) - Standalone network visualization toolkit
+
+---
+
+<p align="center">
+  <sub>Built with ❤️ for computational drug discovery research</sub>
+</p>
