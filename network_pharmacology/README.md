@@ -6,28 +6,29 @@ A Python toolkit for analyzing gene interaction networks and drug-target relatio
 
 ---
 
-> 🔬 **Proof of Concept** | This toolkit is a standalone demonstration of the network pharmacology visualization capabilities from **OmniTarget** — a comprehensive multi-scenario drug discovery pipeline currently in development.
+> 🎉 **Now Available!** | The full **[OmniTarget](https://github.com/OASolliman590/omnitarget)** pipeline is now live! This toolkit is a standalone visualization module from the complete 6-scenario drug discovery platform.
 
 ---
 
-## 🚀 Coming Soon: OmniTarget Pipeline
+## 🚀 OmniTarget Pipeline — Now Live!
 
-This module showcases just **one component** of the larger **OmniTarget** computational drug discovery platform, which includes:
+This module showcases the **network visualization component** of the larger **[OmniTarget](https://github.com/OASolliman590/omnitarget)** computational drug discovery platform:
 
 | Scenario | Description | Status |
 |----------|-------------|--------|
-| 1️⃣ | Disease Network Construction | ✅ Complete |
-| 2️⃣ | Multi-Target Scoring | ✅ Complete |
-| 3️⃣ | Expression Validation | ✅ Complete |
+| 1️⃣ | Disease Network Construction | ✅ Available |
+| 2️⃣ | Multi-Target Scoring | ✅ Available |
+| 3️⃣ | Expression Validation | ✅ Available |
 | 4️⃣ | MRA Simulation & Network Pharmacology | ✅ **This Module** |
-| 5️⃣ | Pathway Cross-Validation | ✅ Complete |
-| 6️⃣ | Drug Repurposing & Safety | ✅ Complete |
+| 5️⃣ | Pathway Cross-Validation | ✅ Available |
+| 6️⃣ | Drug Repurposing & Safety | ✅ Available |
 
-**OmniTarget** leverages **MCP (Model Context Protocol)** to seamlessly integrate with biological databases including UniProt, Reactome, STRING, Open Targets, and more — enabling end-to-end computational drug discovery workflows.
+**OmniTarget** leverages **MCP (Model Context Protocol)** to seamlessly integrate with biological databases including UniProt, Reactome, STRING, ChEMBL, and more.
 
-⭐ **Star this repo** to stay updated on the full pipeline release!
+👉 **[Explore the full OmniTarget pipeline →](https://github.com/OASolliman590/omnitarget)**
 
 ---
+
 
 ## Features
 
